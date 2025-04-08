@@ -1,34 +1,56 @@
 window.onload = function () {
-    let loginBtn = document.querySelector(".login"); // Zoek de login-knop
-    let modal = document.getElementById("loginModal"); // Zoek de modal
-    let closeBtn = document.querySelector(".close"); // Zoek de sluitknop
+    let loginBtn = document.querySelector(".login"); 
+    let modal = document.getElementById("loginModal"); 
+    let closeBtn = document.querySelector(".close"); 
+    let submitBtn = document.querySelector(".modal-content button"); 
+    let usernameInput = document.getElementById("username"); 
+    let passwordInput = document.getElementById("password"); 
 
-    // Controleer of de knoppen correct worden gevonden
-    if (!loginBtn || !modal || !closeBtn) {
-        console.error("FOUT: Login-knop of modal niet gevonden!");
+    // Controleer of alle elementen correct worden gevonden
+    if (!loginBtn || !modal || !closeBtn || !submitBtn || !usernameInput || !passwordInput) {
+        console.error("FOUT: Een of meerdere elementen niet gevonden!");
         return;
     }
 
-    console.log("Login-knop gevonden:", loginBtn);
-    console.log("Modal gevonden:", modal);
-
     // Login knop - modal openen
     loginBtn.addEventListener("click", function () {
-        console.log("Login knop geklikt! Modal openen...");
         modal.style.display = "flex";
     });
 
     // Sluitknop - modal sluiten
     closeBtn.addEventListener("click", function () {
-        console.log("Sluitknop geklikt! Modal sluiten...");
         modal.style.display = "none";
     });
 
     // Klik buiten de modal om te sluiten
     window.addEventListener("click", function (event) {
         if (event.target === modal) {
-            console.log("Buiten de modal geklikt! Modal sluiten...");
             modal.style.display = "none";
         }
+    });
+
+    document.getElementById("loginForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+    
+        let username = document.getElementById("username").value.trim();
+        let password = document.getElementById("password").value.trim();
+    
+        let formData = new FormData();
+        formData.append("username", username);
+        formData.append("password", password);
+    
+        fetch("admin.php", {
+            method: "POST",
+            body: formData,
+        })
+        .then(response => response.text())
+        .then(data => {
+            if (data === "success") {
+                window.location.href = "admin.php";
+            } else {
+                alert(data);
+            }
+        })
+        .catch(error => console.error("Fout:", error));
     });
 };

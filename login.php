@@ -1,41 +1,55 @@
 <?php
 session_start();
 
-// 🔧 Vul hier jouw databasegegevens in
-$host = "localhost";  // Vaak 'localhost' of een specifieke server
-$dbname = "mydatabase";  // Vervang dit met de naam van je database
-$username = "admin"; // Database gebruiker
-$password = "wachtwoord123"; // Database wachtwoord
+$servername = "db";
+$username = "user";
+$password = "password";
+$database = "mydatabase";
 
 try {
-    // Maak een databaseverbinding
-    $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Haal ingevoerde gegevens op
-        $user = $_POST["username"];
-        $pass = $_POST["password"];
-
-        // Controleer of de gebruikersnaam bestaat in de database
-        $stmt = $conn->prepare("SELECT * FROM users WHERE username = :username");
-        $stmt->bindParam(':username', $user);
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($result) {
-            // Vergelijk het ingevoerde wachtwoord met het gehashte wachtwoord uit de database
-            if (password_verify($pass, $result["password"])) {
-                $_SESSION["username"] = $user;
-                echo "Login succesvol!";
-            } else {
-                echo "Fout: Ongeldige gebruikersnaam of wachtwoord.";
-            }
-        } else {
-            echo "Fout: Gebruiker bestaat niet.";
-        }
-    }
+    $pdo = new PDO("mysql:host=$servername;dbname=$database;charset=utf8", $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    echo "❌ Databasefout: " . $e->getMessage();
+    die("Databaseverbinding mislukt: " . $e->getMessage() . "<br>Controleer of de database bestaat en of de gebruiker de juiste rechten heeft.");
+}
+
+$stmt = $pdo->query("SHOW TABLES LIKE 'users'");
+$tableExists = $stmt->rowCount() > 0;
+
+if (!$tableExists) {
+    die("Fout: De tabel 'users' bestaat niet in de database. Zorg ervoor dat de database correct is ingesteld.");
+}
+
+// Verwerking van de inlog
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $userInput = trim($_POST['username'] ?? '');
+    $passInput = trim($_POST['password'] ?? '');
+
+    if (!empty($userInput) && !empty($passInput)) {
+        if ($userInput === "admin" && $passInput === "wachtwoord123") {
+            $_SESSION['user'] = $userInput;
+            header("Location: admin.php");
+            exit;
+        }
+
+        // Zoek de gebruiker in de database
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username");
+        $stmt->bindValue(':username', $userInput);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user) {
+            // Controleer of het wachtwoord correct is
+            if (password_verify($passInput, $user['password_hash'])) {
+                $_SESSION['user'] = $userInput;
+                header("Location: index.php");
+                exit;
+            }
+        }
+
+        // Foutmelding bij mislukte login
+        header("Location: index.php?error=1");
+        exit;
+    }
 }
 ?>

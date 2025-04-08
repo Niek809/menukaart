@@ -46,6 +46,19 @@ label {
     margin-left: 520px;
 }
 
+.logout  {
+    background-color: #f4eee2;
+    border: solid 2px #000000;
+    border-radius: 36px;
+    height: 60px;
+    width: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 520px;
+}
+
 .login-tekst {
     font-size: 28px;
     font-weight: 500;
@@ -69,7 +82,7 @@ label {
 }
 
 .box-button-home {
-    margin-top: 70px;
+    margin-top: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -102,6 +115,138 @@ label {
 
 .insta-logo {
     width: 20px;
+}
+
+/* Menu */
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: #f1e2c3;
+    width: 100%;
+    height: 150px;
+}
+
+.tekst-header {
+    font-size: 33px;
+    font-weight: 500;
+    font-family: "Lato", sans-serif;
+    margin-left: 90px;
+}
+
+.login-header {
+    background-color: #cbbea7;
+    border: solid 2px #000000;
+    border-radius: 36px;
+    height: 60px;
+    width: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: 620px;
+}
+
+.logo-header {
+    border: solid 2px #edc981;
+    border-radius: 5px;
+    margin-left: 300px;
+}
+
+.body-menu {
+    width: 100%;
+    height: 1300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.menu-box {
+    width: 700px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    background-color: #f1e2c3;
+    border: solid 2px #000000;
+    border-radius: 50px;
+    margin-top: 150px;
+}
+
+.tekst-menu-box {
+    font-size: 50px;
+    font-weight: bold;
+    font-family: "Lato", sans-serif;
+}
+
+.tekst-menu-small {
+    font-size: 30px;
+    font-weight: 500;
+    font-family: "Lato", sans-serif;
+    margin-top: 20px;
+}
+
+.callus-menu {
+    width: 600px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    background-color: #cbbea7;
+    border: solid 2px #000000;
+    border-radius: 50px;
+    margin-top: 50px;
+}
+
+.eten-boxs {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 70px;
+    margin-top: 220px;
+}
+
+.photo-eat {
+    border-radius: 10px;
+    width: 500px;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    background-color: #f1e2c3;
+    width: 100%;
+    height: 150px;
+}
+
+.footer-minitekst {
+    color: #807f7e7d;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: "Lato", sans-serif;
+    margin-left: 90px;
+}
+
+.logo-footer {
+    border: solid 2px #edc981;
+    border-radius: 5px;
+    margin-left: 670px;
+}
+
+/* Menukaart */
+
+.body-menukaart {
+    width: 100%;
+    height: 3300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 /* login paneel */
@@ -150,7 +295,7 @@ label {
     width: 30%;
     padding: 10px;
     background-color: #f4eee2;
-    border: solid 2px #edc981;
+    border: solid 2px #edc98150;
     border-radius: 20px;
     cursor: pointer;
     transition: 0.3s;
@@ -175,5 +320,3 @@ label {
     font-size: 20px;
     cursor: pointer;
 }
-
-
