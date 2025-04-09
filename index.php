@@ -19,7 +19,13 @@ session_start();
 
     <div class="above-box">
         <img class="logo" src="images/Schermafbeelding 2025-02-27 082815.png" alt="Logo van café 23">
+        <?php if (isset($_SESSION['logged_in']) && $_SESSION['username'] == 'admin'): ?>
+        <!-- Toon Admin link wanneer ingelogd als admin -->
+        <a href="admin.php" class="login login-header login-tekst">Admin</a>
+    <?php else: ?>
+        <!-- Toon Login knop als niet ingelogd -->
         <button class="login login-tekst">Login</button>
+    <?php endif; ?>
     </div>
 
     <div class="home-cafe-tekst">

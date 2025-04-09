@@ -14,18 +14,25 @@
     <body>
 
     <header>
-        <nav class="container-header">
-            <a href="index.php" class="tekst-header">Home</a>
-            <a href="reserve.php" class="tekst-header">Reserve</a>
-            <a href="about.php" class="tekst-header">Delivery</a>
-        </nav>
-        <img class="logo-header" src="images/Schermafbeelding 2025-04-03 102945.png" alt="Logo van café 23">
+    <nav class="container-header">
+        <a href="index.php" class="tekst-header">Home</a>
+        <a href="reserve.php" class="tekst-header">Reserve</a>
+        <a href="about.php" class="tekst-header">Delivery</a>
+    </nav>
+    <img class="logo-header" src="images/Schermafbeelding 2025-04-03 102945.png" alt="Logo van café 23">
+
+    <?php if (isset($_SESSION['logged_in']) && $_SESSION['username'] == 'admin'): ?>
+        <!-- Toon Admin link wanneer ingelogd als admin -->
+        <a href="admin.php" class="login login-header login-tekst">Admin</a>
+    <?php else: ?>
+        <!-- Toon Login knop als niet ingelogd -->
         <button class="login login-header login-tekst">Login</button>
-    </header>
+    <?php endif; ?>
+</header>
 
     <div class="body-menu">
         <div class="menu-box">
-            <h1 class="tekst-menu-box">Fancy some treats but don't feel like going anywhere?</h1>
+            <h1>Fancy some treats but don't feel like going anywhere?</h1>
             <span class="tekst-menu-small">That's good</span>
             <a href="menukaart.php" class="callus-menu tekst-menu-small">Whole menu</a>
         </div>

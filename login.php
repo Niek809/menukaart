@@ -53,3 +53,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 ?>
+
+<?php
+
+// Veronderstel dat je een gebruikersnaam en wachtwoord in de database hebt gecontroleerd
+if (isset($_POST['username']) && isset($_POST['password'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Check of de logingegevens correct zijn
+    if ($username == 'admin' && $password == 'wachtwoord123') {
+        // Sessie starten voor de admin
+        $_SESSION['logged_in'] = true;
+        $_SESSION['username'] = 'admin'; // Sla de gebruikersnaam op in de sessie
+
+        // Redirect naar de adminpagina
+        header('Location: admin.php');
+        exit;
+    } else {
+        // Toon een foutmelding als de login niet succesvol is
+        echo 'Onjuiste gebruikersnaam of wachtwoord';
+    }
+}
+?>
