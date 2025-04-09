@@ -1,9 +1,12 @@
 <?php
 session_start();
-$_SESSION['user'] = "Admin";
-echo "Je bent ingelogd als " . $_SESSION['user'];
+ 
+if (!isset($_SESSION['ingelogt']) || $_SESSION['ingelogt'] !== true) {
+    header("Location: login.php");
+    exit();
+}
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>

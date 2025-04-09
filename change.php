@@ -41,8 +41,8 @@ if (isset($_POST['verwijderen'])) {
 <header>
     <nav class="container-header">
         <a href="index.php" class="tekst-header">Home</a>
-        <a href="reserve.php" class="tekst-header">Reserve</a>
-        <a href="about.php" class="tekst-header">Delivery</a>
+        <a href="" class="tekst-header">Reserve</a>
+        <a href="" class="tekst-header">Delivery</a>
     </nav>
     <img class="logo-header" src="images/Schermafbeelding 2025-04-03 102945.png" alt="Logo van café 23">
     <button class="login login-header login-tekst">Login</button>
