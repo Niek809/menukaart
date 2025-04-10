@@ -1,5 +1,6 @@
 <?php
 session_start();
+$is_logged_in = $_SESSION["ingelogt"] ?? false;
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +20,13 @@ session_start();
 
     <div class="above-box">
         <img class="logo" src="images/Schermafbeelding 2025-02-27 082815.png" alt="Logo van café 23">
-        <button class="login login-tekst">Login</button>
+        <?php
+    if (!$is_logged_in) {
+        echo '<button class="login login-tekst">Login</button>';
+    } else {    
+        echo '<a href="admin.php" class="login login-tekst">Admin</a>';
+    }
+    ?>
     </div>
 
     <div class="home-cafe-tekst">

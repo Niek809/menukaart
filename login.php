@@ -16,11 +16,7 @@ try {
 $stmt = $pdo->query("SHOW TABLES LIKE 'users'");
 $tableExists = $stmt->rowCount() > 0;
 
-if (!$tableExists) {
-    die("Fout: De tabel 'users' bestaat niet in de database. Zorg ervoor dat de database correct is ingesteld.");
-}
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userInput = trim($_POST['username'] ?? '');
     $passInput = trim($_POST['password'] ?? '');
 

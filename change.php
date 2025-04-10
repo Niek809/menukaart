@@ -16,8 +16,8 @@ if (isset($_POST['aanpassen'])) {
     $naam = $_POST['nieuwe_naam'];
     $omschrijving = $_POST['nieuwe_omschrijving'];
     $prijs = $_POST['nieuwe_prijs'];
-    $stmt = $pdo->prepare("UPDATE menukaart SET naam = ?, omschrijving = ? WHERE id = ?, prijs = ?");
-    $stmt->execute([$naam, $omschrijving, $id, $prijs]);
+    $stmt = $pdo->prepare("UPDATE menukaart SET naam = ?, omschrijving = ?, prijs = ? WHERE id = ?");
+    $stmt->execute([$naam, $omschrijving, $prijs, $id]);
 }
 
 // Verwijderen
@@ -65,7 +65,7 @@ if (isset($_POST['verwijderen'])) {
     Gerecht ID: <input type="number" name="id" required><br>
     Nieuwe naam: <input type="text" name="nieuwe_naam" required><br>
     Nieuwe omschrijving: <textarea name="nieuwe_omschrijving" required></textarea><br>
-    Nieuwe prijs: <input type="number" name="prijs" required><br>
+    Nieuwe prijs: <input type="price" name="nieuwe_prijs" required><br>
     <button type="submit" name="aanpassen">Aanpassen</button>
 </form>
 

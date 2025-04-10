@@ -1,3 +1,8 @@
+<?php
+session_start();
+$is_logged_in = $_SESSION["ingelogt"] ?? false;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +25,13 @@
         <a href="" class="tekst-header">Delivery</a>
     </nav>
     <img class="logo-header" src="images/Schermafbeelding 2025-04-03 102945.png" alt="Logo van café 23">
-        <button class="login login-header login-tekst">Login</button>
+        <?php
+    if (!$is_logged_in) {
+        echo '<button class="login login-tekst">Login</button>';
+    } else {    
+        echo '<a href="admin.php" class="login login-header login-tekst">Admin</a>';
+    }
+    ?>
 </header>
 
     <div class="body-menu">
