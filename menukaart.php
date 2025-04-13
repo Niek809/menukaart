@@ -36,22 +36,42 @@ require 'db.php';
         ?>
     </header>
 
+    <!-- Zoekbalk toegevoegd -->
+    
+
     <div class="body-change">
         <div class="tekst-menukaart-change">
             <h1>Menukaart</h1>
+            <div class="zoekbalk-container">
+        <form method="get" class="zoek-form">
+            <input type="text" name="zoek" placeholder="Zoek naar een gerecht">
+            <button type="submit">Zoeken</button>
+        </form>
+    </div>
         </div>
+        
         <div class="change-menu">
             <ul class="menu-list">
                 <?php
-                $stmt = $pdo->query("SELECT * FROM menukaart ORDER BY id ASC");
-                while ($gerecht = $stmt->fetch()) {
-                    echo "<li class='menu-item'>";
-                    echo "<div class='menu-row'>";
-                    echo "<span class='gerecht-naam'>{$gerecht['naam']}</span>";
-                    echo "€" . number_format($gerecht['prijs'], 2);
-                    echo "</div>";
-                    echo "<div class='gerecht-omschrijving'>{$gerecht['omschrijving']}</div>";
-                    echo "</li>";
+                $zoekterm = isset($_GET['zoek']) ? $_GET['zoek'] : '';
+
+                $sql = "SELECT * FROM menukaart WHERE naam LIKE :zoekterm OR omschrijving LIKE :zoekterm ORDER BY id ASC";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute(['zoekterm' => '%' . $zoekterm . '%']);
+                $gerechten = $stmt->fetchAll();
+
+                if ($gerechten) {
+                    foreach ($gerechten as $gerecht) {
+                        echo "<li class='menu-item'>";
+                        echo "<div class='menu-row'>";
+                        echo "<span class='gerecht-naam'>{$gerecht['naam']}</span>";
+                        echo "€" . number_format($gerecht['prijs'], 2);
+                        echo "</div>";
+                        echo "<div class='gerecht-omschrijving'>{$gerecht['omschrijving']}</div>";
+                        echo "</li>";
+                    }
+                } else {
+                    echo "<p>Geen resultaten gevonden.</p>";
                 }
                 ?>
             </ul>
