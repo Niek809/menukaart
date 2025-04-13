@@ -1,23 +1,25 @@
 <?php
 session_start();
- 
+
 if (!isset($_SESSION['ingelogt']) || $_SESSION['ingelogt'] !== true) {
     header("Location: login.php");
     exit();
 }
 ?>
- 
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
 
-<div class="above-box">
+    <div class="above-box">
         <img class="logo" src="images/Schermafbeelding 2025-02-27 082815.png" alt="Logo van café 23">
         <a href="logout.php" class="logout login-tekst">Logout</a>
     </div>
@@ -39,4 +41,5 @@ if (!isset($_SESSION['ingelogt']) || $_SESSION['ingelogt'] !== true) {
     </a>
 
 </body>
+
 </html>

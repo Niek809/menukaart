@@ -21,21 +21,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $passInput = trim($_POST['password'] ?? '');
 
     if (!empty($userInput) && !empty($passInput)) {
-                $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username AND password = :password");
-                $stmt->bindValue(':username', $userInput);
-                $stmt->bindValue(':password', $passInput);
-                $stmt->execute();
-                $user = $stmt->fetch(PDO::FETCH_ASSOC);
-         
-                if ($user) {
-                    $_SESSION['ingelogt'] = true;
-                    $_SESSION['user'] = $userInput;
-                    header("Location: admin.php");
-                    exit;
-                }
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = :username AND password = :password");
+        $stmt->bindValue(':username', $userInput);
+        $stmt->bindValue(':password', $passInput);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user) {
+            $_SESSION['ingelogt'] = true;
+            $_SESSION['user'] = $userInput;
+            header("Location: admin.php");
+            exit;
+        }
 
         header("Location: index.php?error=1");
         exit;
     }
 }
-?>

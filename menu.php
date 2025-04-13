@@ -16,23 +16,23 @@ $is_logged_in = $_SESSION["ingelogt"] ?? false;
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 
-    <body>
+<body>
 
     <header>
-    <nav class="container-header">
-        <a href="index.php" class="tekst-header">Home</a>
-        <a href="" class="tekst-header">Reserve</a>
-        <a href="" class="tekst-header">Delivery</a>
-    </nav>
-    <img class="logo-header" src="images/Schermafbeelding 2025-04-03 102945.png" alt="Logo van café 23">
+        <nav class="container-header">
+            <a href="index.php" class="tekst-header">Home</a>
+            <a href="" class="tekst-header">Reserve</a>
+            <a href="" class="tekst-header">Delivery</a>
+        </nav>
+        <img class="logo-header" src="images/Schermafbeelding 2025-04-03 102945.png" alt="Logo van café 23">
         <?php
-    if (!$is_logged_in) {
-        echo '<button class="login login-tekst">Login</button>';
-    } else {    
-        echo '<a href="admin.php" class="login login-header login-tekst">Admin</a>';
-    }
-    ?>
-</header>
+        if (!$is_logged_in) {
+            echo '<button class="login login-header login-tekst">Login</button>';
+        } else {
+            echo '<a href="admin.php" class="login login-header login-tekst">Admin</a>';
+        }
+        ?>
+    </header>
 
     <div class="body-menu">
         <div class="menu-box">
@@ -54,25 +54,26 @@ $is_logged_in = $_SESSION["ingelogt"] ?? false;
 
     <!-- Loginpaneel -->
     <div id="loginModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2 class="login-tekst">Login</h2>
-                <form action="login.php" method="POST">
-                    <label for="username">Gebruikersnaam:</label>
-                    <input type="text" id="username" name="username" required>
-                    <label for="password">Wachtwoord:</label>
-                    <input type="password" id="password" name="password" required>
-                    <button class="login-tekst-paneel" type="submit">Inloggen</button>
-                </form>
-            </div>
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 class="login-tekst">Login</h2>
+            <form action="login.php" method="POST">
+                <label for="username">Gebruikersnaam:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Wachtwoord:</label>
+                <input type="password" id="password" name="password" required>
+                <button class="login-tekst-paneel" type="submit">Inloggen</button>
+            </form>
         </div>
+    </div>
 
-        <?php if (isset($_GET['error']) && $_GET['error'] == 1): ?>
-            <p style="color: red;">Geen geldige inloggegevens. Probeer het opnieuw.</p>
-        <?php endif; ?>
+    <?php if (isset($_GET['error']) && $_GET['error'] == 1): ?>
+        <p style="color: red;">Geen geldige inloggegevens. Probeer het opnieuw.</p>
+    <?php endif; ?>
 
-        <!-- JavaScript -->
-        <script src="js/script.js"></script>
-        
-    </body>
-    </html>
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

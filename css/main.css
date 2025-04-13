@@ -6,6 +6,7 @@
 
 body {
     background-color: #f4eee2;
+    font-family: "Lato", sans-serif;
 }
 
 a {
@@ -25,6 +26,7 @@ h2 {
 }
 
 /* Index */
+
 .above-box {
     margin-top: 50px;
     display: flex;
@@ -51,7 +53,7 @@ h2 {
     margin-left: 520px;
 }
 
-.logout  {
+.logout {
     background-color: #f4eee2;
     border: solid 2px #000000;
     border-radius: 36px;
@@ -67,6 +69,7 @@ h2 {
 .login-tekst {
     font-size: 28px;
     font-weight: 500;
+    font-family: "Lato", sans-serif;
 }
 
 .home-cafe-tekst {
@@ -82,6 +85,7 @@ h2 {
 .home-tekst {
     font-size: 28px;
     font-weight: 500;
+    font-family: "Lato", sans-serif;
 }
 
 .box-button-home {
@@ -105,6 +109,7 @@ h2 {
 .button-tekst {
     font-size: 22px;
     font-weight: 500;
+    font-family: "Lato", sans-serif;
 }
 
 .sociaal {
@@ -120,6 +125,7 @@ h2 {
 }
 
 /* Menu */
+
 header {
     display: flex;
     align-items: center;
@@ -131,6 +137,7 @@ header {
 .tekst-header {
     font-size: 33px;
     font-weight: 500;
+    font-family: "Lato", sans-serif;
     margin-left: 90px;
 }
 
@@ -178,11 +185,13 @@ header {
 .tekst-menu-box {
     font-size: 50px;
     font-weight: bold;
+    font-family: "Lato", sans-serif;
 }
 
 .tekst-menu-small {
     font-size: 30px;
     font-weight: 500;
+    font-family: "Lato", sans-serif;
     margin-top: 20px;
 }
 
@@ -227,6 +236,7 @@ footer {
     color: #807f7e7d;
     font-size: 20px;
     font-weight: 500;
+    font-family: "Lato", sans-serif;
     margin-left: 90px;
 }
 
@@ -237,6 +247,7 @@ footer {
 }
 
 /* Menukaart */
+
 .body-menukaart {
     width: 100%;
     height: 3300px;
@@ -246,21 +257,122 @@ footer {
 }
 
 /* change of menukaart */
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.menu-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 28px;
+    font-weight: 600;
+    margin-top: 50px;
+}
+
+.gerecht-omschrijving {
+    font-size: 24px;
+    color: #666;
+    margin-top: 10px;
+}
+
 .body-change {
     width: 100%;
-    height: 3300px;
+    padding: 40px;
     display: flex;
-    align-items: center;
+    text-align: center;
     flex-direction: column;
 }
 
 .change-menu {
-    margin-top: 200px;
+    margin-top: 50px;
     font-size: 33px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    text-align: start;
+}
+
+.toevoeg-aanpas-menu {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.form-box {
+    background-color: #f1e2c3;
+    padding: 30px;
+    border: 2px solid #000;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.form-box label {
+    font-family: "Lato", sans-serif;
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input-box {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: solid 1px #00000080;
+    border-radius: 5px;
+    font-family: "Lato", sans-serif;
+}
+
+button {
+    background-color: #cbbea7;
+    border: solid 2px #000;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: "Lato", sans-serif;
     font-weight: 500;
 }
 
+.tekst-menu-change {
+    margin-top: 200px;
+}
+
+.tekst-menukaart-change {
+    margin-top: 50px;
+}
+
+.menu-kop-change {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.verwijder-box {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+ul {
+    margin-top: 40px;
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+
 /* login paneel */
+
 .modal {
     display: none;
     position: fixed;
@@ -320,6 +432,7 @@ footer {
 .login-tekst-paneel {
     font-size: 18px;
     font-weight: 500;
+    font-family: "Lato", sans-serif;
 }
 
 .close {
@@ -329,95 +442,3 @@ footer {
     font-size: 20px;
     cursor: pointer;
 }
-
-/* Media Queries */
-
-@media (max-width: 1200px) {
-    .logo {
-        margin-left: 500px;
-    }
-
-    .login, .logout {
-        margin-left: 300px;
-    }
-
-    .menu-box {
-        width: 80vw;
-        height: 35vh;
-    }
-
-    .photo-eat {
-        width: 40vw;
-    }
-
-    .button-home {
-        width: 80vw;
-    }
-
-    .box-button-home {
-        gap: 20px;
-    }
-
-    .footer-minitekst {
-        font-size: 18px;
-    }
-}
-
-@media (max-width: 900px) {
-    .logo {
-        margin-left: 350px;
-    }
-
-    .login, .logout {
-        margin-left: 150px;
-    }
-
-    .menu-box {
-        width: 90vw;
-        height: 30vh;
-    }
-
-    .photo-eat {
-        width: 30vw;
-    }
-
-    .button-home {
-        width: 90vw;
-    }
-
-    .home-cafe-tekst {
-        margin-left: 420px;
-    }
-}
-
-@media (max-width: 600px) {
-    .logo {
-        margin-left: 100px;
-    }
-
-    .login, .logout {
-        margin-left: 0;
-    }
-
-    .menu-box {
-        width: 95vw;
-        height: 25vh;
-    }
-
-    .photo-eat {
-        width: 70vw;
-    }
-
-    .box-button-home {
-        width: 95vw;
-    }
-
-    .footer-minitekst {
-        font-size: 15px;
-    }
-
-    .home-cafe-tekst {
-        margin-left: 0;
-    }
-}
-

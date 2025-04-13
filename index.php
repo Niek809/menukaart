@@ -11,9 +11,7 @@ $is_logged_in = $_SESSION["ingelogt"] ?? false;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="css/main.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -21,12 +19,12 @@ $is_logged_in = $_SESSION["ingelogt"] ?? false;
     <div class="above-box">
         <img class="logo" src="images/Schermafbeelding 2025-02-27 082815.png" alt="Logo van café 23">
         <?php
-    if (!$is_logged_in) {
-        echo '<button class="login login-tekst">Login</button>';
-    } else {    
-        echo '<a href="admin.php" class="login login-tekst">Admin</a>';
-    }
-    ?>
+        if (!$is_logged_in) {
+            echo '<button class="login login-tekst">Login</button>';
+        } else {
+            echo '<a href="admin.php" class="login login-tekst">Admin</a>';
+        }
+        ?>
     </div>
 
     <div class="home-cafe-tekst">
@@ -69,4 +67,5 @@ $is_logged_in = $_SESSION["ingelogt"] ?? false;
     <script src="js/script.js"></script>
 
 </body>
+
 </html>
